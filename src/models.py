@@ -27,6 +27,7 @@ class Comments(Base):
     post_id = Column(Integer, ForeignKey('posts.id'))
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
+    posts = relationship("Posts")
 
 class Posts(Base):
     __tablename__ = 'posts'
@@ -35,6 +36,7 @@ class Posts(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
+
 class Media(Base):
     __tablename__ = 'media'
     id = Column(Integer, primary_key=True)
@@ -42,7 +44,7 @@ class Media(Base):
     body = Column(Text)
     post_id = Column(Integer, ForeignKey('posts.id'))
     user_id = Column(Integer, ForeignKey('user.id'))
-    posts = relationship(Posts)
+    posts = relationship("Posts")
 
 try:
     result = render_er(Base, 'diagram.png')
