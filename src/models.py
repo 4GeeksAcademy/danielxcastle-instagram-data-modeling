@@ -46,9 +46,4 @@ class Media(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     posts = relationship("Posts")
 
-try:
     result = render_er(Base, 'diagram.png')
-    print("Success! Check the diagram.png file")
-except Exception as e:
-    print("There was a problem generating the diagram")
-    raise e
